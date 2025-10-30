@@ -24,3 +24,7 @@ go.work.sum
 
 # env file
 .env
+
+# 本地示例配置文件（不提交）
+examples/**/config.local.json
+examples/**/config.local.yaml

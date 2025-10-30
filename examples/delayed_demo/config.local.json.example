@@ -1,0 +1,9 @@
+{
+  "amqp_url": "amqp://guest:guest@localhost:5672/",
+  "exchange": "demo.delayed.exchange",
+  "queue": "demo.delayed.queue",
+  "routing_key": "demo.delayed.rk",
+  "delay_ms": 2000
+}
+
+

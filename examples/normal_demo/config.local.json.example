@@ -1,0 +1,8 @@
+{
+  "amqp_url": "amqp://guest:guest@localhost:5672/",
+  "exchange": "demo.normal.exchange",
+  "queue": "demo.normal.queue",
+  "routing_key": "demo.normal.rk"
+}
+
+

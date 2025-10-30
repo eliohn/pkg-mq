@@ -3,9 +3,10 @@ package amqpclt
 import (
 	"context"
 	"fmt"
-	"github.com/bytedance/sonic"
-	"github.com/streadway/amqp"
 	"time"
+
+	"github.com/bytedance/sonic"
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 type DelayedPublisher struct {

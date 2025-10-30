@@ -6,7 +6,7 @@ import (
 	"reflect"
 
 	"github.com/bytedance/sonic"
-	"github.com/streadway/amqp"
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 // Publisher implements an amqp publisher.
