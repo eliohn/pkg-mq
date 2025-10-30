@@ -2,6 +2,7 @@ package amqpclt
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/bytedance/sonic"
@@ -13,13 +14,21 @@ type DelayedSubscriber struct {
 }
 
 func NewDelayedSubscriber(conn *amqp.Connection, exchange string, messageType reflect.Type) (*DelayedSubscriber, error) {
-	subscriber, err := NewSubscriber(conn, exchange, messageType)
+	// 与普通订阅者不同：这里显式声明 x-delayed-message 交换机
+	ch, err := conn.Channel()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("cannot allocate channel: %v", err)
 	}
-	return &DelayedSubscriber{
-		Subscriber: *subscriber,
-	}, nil
+	if err := declareDelayedExchange(ch, exchange); err != nil {
+		return nil, fmt.Errorf("cannot declare delayed exchange: %v", err)
+	}
+	base := &Subscriber{
+		ch:       ch,
+		conn:     conn,
+		exchange: exchange,
+		dataType: messageType,
+	}
+	return &DelayedSubscriber{Subscriber: *base}, nil
 }
 
 func (s *DelayedSubscriber) BindQueue(queueName string, bindKey string) error {

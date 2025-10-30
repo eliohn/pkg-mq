@@ -161,7 +161,6 @@ func (s *Subscriber) Subscribe(c context.Context) (chan interface{}, error) {
 }
 
 func declareExchange(ch *amqp.Channel, exchange string) error {
-	return ch.ExchangeDeclare(exchange, "x-delayed-message", true, false, false, false, amqp.Table{
-		"x-delayed-type": "direct", // 这里指定底层交换机类型
-	})
+	// 普通交换机使用 direct 类型
+	return ch.ExchangeDeclare(exchange, "direct", true, false, false, false, nil)
 }
