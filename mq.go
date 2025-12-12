@@ -14,3 +14,11 @@ type Publisher interface {
 type Subscriber interface {
 	Subscribe(context.Context) (ch chan interface{}, err error)
 }
+type RabbitMqConfig struct {
+	Host        string `mapstructure:"host" json:"host" yaml:"host"`
+	Port        int    `mapstructure:"port" json:"port" yaml:"port"`
+	Exchange    string `mapstructure:"exchange" json:"exchange" yaml:"exchange"`
+	Username    string `mapstructure:"username" json:"username" yaml:"username"`
+	Password    string `mapstructure:"password" json:"password" yaml:"password"`
+	VirtualHost string `mapstructure:"virtual_host" json:"virtual_host" yaml:"virtual_host"`
+}
