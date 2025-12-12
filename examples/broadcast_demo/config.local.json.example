@@ -1,0 +1,9 @@
+{
+  "amqp_url": "amqp://guest:guest@localhost:5672/",
+  "exchange": "demo.broadcast.exchange",
+  "queue1": "demo.broadcast.queue1",
+  "queue2": "demo.broadcast.queue2",
+  "queue3": "demo.broadcast.queue3",
+  "routing_key": "demo.broadcast.rk"
+}
+
